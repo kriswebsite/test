@@ -1,0 +1,692 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    width: 90%;
+    max-width: 1300px;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Header Styles */
+header {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header .logo h1 a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 28px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #1abc9c;
+}
+
+/* Dropdown Menu Styles */
+nav ul li.dropdown {
+    position: relative; /* Establishes a positioning context for the dropdown */
+}
+
+nav ul li.dropdown .dropdown-content {
+    display: none; /* Hide the dropdown by default */
+    position: absolute; /* Position it absolutely relative to the parent */
+    top: 100%; /* Position below the parent */
+    left: 0;
+    background-color: #2c3e50; /* Same as header background for consistency */
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 0 0 8px 8px;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+nav ul li.dropdown .dropdown-content li {
+    width: 100%; /* Full width for each dropdown item */
+}
+
+nav ul li.dropdown .dropdown-content li a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li.dropdown .dropdown-content li a:hover {
+    background-color: #1abc9c; /* Highlight on hover */
+}
+
+/* Show the dropdown on hover (desktop) */
+nav ul li.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Caret Icon Styling */
+nav ul li.dropdown .dropbtn {
+    display: flex;
+    align-items: center;
+}
+
+nav ul li.dropdown .dropbtn i {
+    margin-left: 5px;
+    font-size: 0.8em;
+}
+
+/* Menu Toggle Styles */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 30px;
+    background-color: #fff;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 992px) {
+    .menu-toggle {
+        display: flex;
+        position: absolute;
+        top: 25px;
+        right: 20px;
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+        background-color: #2c3e50;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 15px 0;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    /* Mobile Dropdown Styles */
+    nav ul li.dropdown .dropdown-content {
+        position: static; /* Removes absolute positioning */
+        box-shadow: none;
+        border-radius: 0;
+        background-color: #34495e; /* Slightly different for differentiation */
+    }
+
+    nav ul li.dropdown .dropdown-content li a {
+        padding: 10px 20px;
+    }
+
+    /* Toggle dropdown on click for mobile */
+    nav ul li.dropdown .dropbtn {
+        cursor: pointer;
+    }
+
+    nav ul li.dropdown .dropbtn::after {
+        content: '\f0d7'; /* Font Awesome down arrow */
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+    }
+
+    nav ul li.dropdown.active .dropbtn::after {
+        transform: rotate(180deg);
+    }
+
+    nav ul li.dropdown.active .dropdown-content {
+        display: block;
+    }
+}
+
+/* Main Content Styles */
+main {
+    padding: 100px 0 60px 0; /* Top padding accounts for fixed header */
+}
+
+/* Article Content Styles */
+.article-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+}
+
+.article-content h1 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.article-content p {
+    margin-bottom: 20px;
+    color: #555;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+.article-content h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #1abc9c;
+    border-bottom: 2px solid #1abc9c;
+    padding-bottom: 10px;
+}
+
+.article-content h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #3498db;
+}
+
+.article-content ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.article-content ul li {
+    margin-bottom: 10px;
+}
+
+.article-content img.post-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Table of Contents Styles */
+.table-of-contents {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 30px 0;
+}
+
+.table-of-contents h2 {
+    margin-bottom: 10px;
+    font-size: 22px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.table-of-contents ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.table-of-contents ul li {
+    margin-bottom: 10px;
+}
+
+.table-of-contents ul li a {
+    color: #2980b9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.table-of-contents ul li a:hover {
+    color: #1abc9c;
+}
+
+/* Nested Lists in ToC */
+.table-of-contents ul ul {
+    padding-left: 20px;
+}
+
+.table-of-contents ul ul li a {
+    font-size: 16px;
+}
+
+/* FAQs Section Styles */
+.faqs {
+    background-color: #f1f1f1;
+    padding: 40px 0;
+    border-radius: 8px;
+    margin: 40px 0;
+}
+
+.faqs .container {
+    max-width: 1000px;
+}
+
+.faqs h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    font-size: 28px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h3 {
+    font-size: 20px;
+    color: #1abc9c;
+    cursor: pointer;
+    position: relative;
+    padding-right: 25px;
+}
+
+.faq-item h3::after {
+    content: '\f107'; /* Font Awesome Plus Icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active h3::after {
+    transform: rotate(180deg);
+}
+
+.faq-item p {
+    display: none;
+    margin-top: 10px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.faq-item.active p {
+    display: block;
+}
+
+/* Featured Casino Styles */
+.featured-casino {
+    background-color: #fff;
+    padding: 15px; /* Adjusted for compactness */
+    border: 2px solid #1abc9c;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+    max-width: 100%;
+    z-index: 999;
+    text-align: center;
+}
+
+.featured-casino h2 {
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.featured-casino p {
+    color: #555;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.btn-featured {
+    display: inline-block;
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.btn-featured:hover {
+    background-color: #c0392b;
+}
+
+.close-featured {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #e74c3c;
+    transition: color 0.3s ease;
+}
+
+.close-featured:hover {
+    color: #c0392b;
+}
+
+/* Fixed Positioning Styles */
+.featured-casino.fixed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    z-index: 1000;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+}
+
+.featured-casino.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Responsive Adjustments for Featured Casino */
+@media (max-width: 768px) {
+    .featured-casino.fixed {
+        width: 90%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .featured-casino {
+        padding: 10px;
+    }
+
+    .featured-casino h2 {
+        font-size: 18px;
+    }
+
+    /* Featured Casino Button Styles */
+    .btn-featured {
+        padding: 8px 16px;
+        font-size: 14px;
+        padding-bottom: 15px;
+    }
+
+    .close-featured {
+        font-size: 16px;
+        top: 6px;
+        right: 6px;
+    }
+}
+
+/* Latest Posts Section Styles */
+.latest-posts {
+    background-color: #f9f9f9;
+    padding: 40px 0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.latest-posts h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.post-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.post-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.post-item h3 {
+    font-size: 20px;
+    color: #1abc9c;
+    margin: 15px;
+}
+
+.post-item p {
+    font-size: 16px;
+    color: #555;
+    margin: 0 15px 15px 15px;
+    line-height: 1.4;
+}
+
+.post-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+    border-top: 4px solid #e74c3c;
+    margin-top: 60px; /* Space to prevent overlap with fixed featured casino */
+}
+
+.footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #e74c3c;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Social Share Styles */
+.social-share {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.social-share h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.social-share a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #fff;
+    background-color: #2980b9;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.social-share a:hover {
+    background-color: #1abc9c;
+}
+
+.social-share a i {
+    margin-right: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    .featured-casino {
+        width: 95%;
+        bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .article-content h1 {
+        font-size: 24px;
+    }
+
+    .article-content h2 {
+        font-size: 22px;
+    }
+
+    .article-content h3 {
+        font-size: 18px;
+    }
+
+    .faqs h2 {
+        font-size: 24px;
+    }
+
+    .faqs h3 {
+        font-size: 18px;
+    }
+
+    .featured-casino h2 {
+        font-size: 20px;
+    }
+
+    .featured-casino p {
+        font-size: 14px;
+    }
+
+    .featured-casino .btn-featured {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    footer p {
+        font-size: 12px;
+    }
+}
+
+/* Premier Real Money Online Casinos Styling */
+.casino {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.casino.featured {
+    border: 2px solid #ff9800; /* Thicker and vibrant border for the featured casino */
+    background-color: #fff3e0; /* Light orange background to make it stand out */
+}
+
+.casino-content {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.casino-content h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.casino-content p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.casino-content ul {
+    margin: 10px 0;
+    padding-left: 20px;
+    color: #555;
+}
+
+.btn-check {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff9800;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn-check:hover {
+    background-color: #e68900;
+}
+
